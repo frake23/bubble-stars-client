@@ -7,7 +7,7 @@ interface PaperProps {
 const Paper: React.FC<PaperProps> = ({ className, children }) => {
     return (
         <div
-            className={`rounded-xl shadow-md border border-gray-300 p-4${className ? ' ' + className : ''}`}
+            className={`rounded-xl shadow-md border border-gray-300 p-4 ${className ? className : ''}`}
         >
             {children}
         </div>

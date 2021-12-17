@@ -1,7 +1,10 @@
 import type { NextPage } from 'next'
 import LoginForm from '../components/LoginForm'
+import useAuthRedirect from '../hooks/useAuthRedirect'
 
-const Login: NextPage = () => {
+const LoginPage: NextPage = () => {
+    useAuthRedirect({ whenLoggedIn: true });
+    
     return (
         <div className="min-h-screen flex justify-center items-center">
             <LoginForm/>
@@ -10,4 +13,4 @@ const Login: NextPage = () => {
     
 }
 
-export default Login
+export default LoginPage

@@ -3,23 +3,23 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import fetcher from '../fetcher';
+import useUser from '../hooks/useUser';
 import setServerErrors from '../lib/setServerErrors';
 import Button from './Button';
-import Input from './Input';
+import {Input} from './Controls';
 import Paper from './Paper';
 
 interface RegisterFormData {
     email: string,
     username: string,
     password: string,
-    password_confirmation: string
 }
 
 // I know that it's not DRY code, but i hurry
 
 export default function RegisterForm() {
-    const router = useRouter();
-    const { register, handleSubmit, setError } = useForm<RegisterFormData>()
+    const { register, handleSubmit, setError, formState: { errors } } = useForm<RegisterFormData>();
+    const { mutate } = useUser();
 
     const onSubmit = async (data: RegisterFormData) => {
         const json = await fetcher(process.env.NEXT_PUBLIC_API_HOST! + '/auth/register', {
@@ -30,7 +30,7 @@ export default function RegisterForm() {
             setServerErrors<RegisterFormData>(json.errors, setError);
             return
         }
-        router.push('/')
+        mutate!();
     }
 
     return (
@@ -43,6 +43,7 @@ export default function RegisterForm() {
                     label="email"
                     register={register}
                     className="mb-2"
+                    error={errors.email?.message}
                 />
                 <Input
                     title="Имя пользователя"
@@ -50,20 +51,15 @@ export default function RegisterForm() {
                     label="username"
                     register={register}
                     className="mb-2"
+                    error={errors.username?.message}
                 />
                 <Input
                     title="Пароль"
                     placeholder="Введите пароль"
                     label="password"
                     register={register}
-                    className="mb-2"
-                />
-                <Input
-                    title="Повторите пароль"
-                    placeholder="Введите пароль"
-                    label="password_confirmation"
-                    register={register}
                     className="mb-4"
+                    error={errors.password?.message}
                 />
                 <Button title="Зарегестрироваться"/>
             </form>

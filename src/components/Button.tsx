@@ -7,7 +7,7 @@ interface ButtonProps {
     type?: 'primary' | 'secondary',
     onClick?: (() => void) | 'submit',
     className?: string,
-    color?: string,
+    color?: 'pink' | 'red' | 'blue',
     href?: string
 }
 
@@ -19,10 +19,13 @@ const Button: React.FC<ButtonProps> = ({
     color = 'pink',
     href
 }) => {
+    const { primaryColor, secondaryColor } = pickColor(color);
+
     const _container: React.FC = ({children}) => 
         href 
             ? <Link href={href} passHref>{children}</Link>
             : <>{children}</>
+
     return (
         <_container>
             <button
@@ -32,8 +35,8 @@ const Button: React.FC<ButtonProps> = ({
                     text-sm py-2 px-4 font-medium
                     ${
                         type === 'primary'
-                            ? `bg-${color}-500 hover:bg-${color}-600 text-white`
-                            : `bg-white border-2 border-${color}-500 hover:bg-gray-50 text-${color}-500`
+                            ? `text-white ${primaryColor}`
+                            : `bg-white border-2 hover:bg-gray-50 ${secondaryColor}`
                     }
                     rounded
                     ${className || ''}
@@ -46,5 +49,21 @@ const Button: React.FC<ButtonProps> = ({
         </_container>
     );
 };
+
+function pickColor(color: ButtonProps['color']) {
+    let primaryColor;
+    let secondaryColor;
+    if (color === 'pink') {
+        primaryColor = 'bg-pink-500 hover:bg-pink-600';
+        secondaryColor = 'border-pink-500 text-pink-500';
+    } else if (color === 'red') {
+        primaryColor = 'bg-red-500 hover:bg-red-600';
+        secondaryColor = 'border-red-500 text-red-500';
+    } else {
+        primaryColor = 'bg-blue-500 hover:bg-blue-600';
+        secondaryColor = 'border-blue-500 text-blue-500';
+    }
+    return {primaryColor, secondaryColor}
+}
 
 export default Button;
