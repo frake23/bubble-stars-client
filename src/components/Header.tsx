@@ -9,7 +9,7 @@ export default function Header() {
     const {user, loading} = useUser();
 
     return (
-        <div className="shadow-md bg-pink-50">
+        <div className="shadow-md bg-blue-50">
             <div className="container px-4 py-3 flex justify-between">
                 <div className="flex items-center">
                     <Link href="/" passHref>
@@ -19,7 +19,7 @@ export default function Header() {
                         </a>
                     </Link>
                     <Link href='/bubbles/manage/all' passHref>
-                        <a className="text-base text-pink-500">Создать bubble</a>
+                        <a className="text-base text-blue-500">Создать bubble</a>
                     </Link>
                 </div>
                 {
@@ -27,7 +27,7 @@ export default function Header() {
                     (
                         user ?
                         <Link href='/profile' passHref>
-                            <a className="flex font-mono text-base font-bold text-pink-500 items-center">
+                            <a className="flex font-mono text-base font-bold text-blue-500 items-center">
                                 {user.username}
                                 <UserIcon className="w-6 h-6 ml-1"/>
                             </a>

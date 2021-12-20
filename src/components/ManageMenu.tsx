@@ -33,7 +33,7 @@ const MenuItem: React.FC<{active: boolean, name: string, text: string}> = ({acti
             <a className={`
                 text-lg
                 font-medium
-                ${active ? 'text-pink-500' : 'text-gray-700'}
+                ${active ? 'text-blue-500' : 'text-gray-700'}
                 py-2
             `}>
                 {text}

@@ -18,8 +18,10 @@ const BubbleVariantSelect: React.FC<BubbleVariantSelectProps> = ({bubbleId, onCo
 
     return (
         data && !data.completed ?
-        <div className="flex flex-grow flex-col">
-            <Paper className="text-6xl text-center mb-8 bg-pink-50 self-center">{data.round}/{data.of}</Paper>
+        <div className="flex flex-grow flex-col relative">
+            <Paper className="text-2xl text-center mb-8 bg-blue-50 self-center absolute top-8 z-50">
+                {data.round}/{data.of}
+            </Paper>
             <div className="flex flex-grow md:flex-row flex-col">
                 <BubbleVariantOption variant={data.bubble_variants[0]} onClick={() => select(data.bubble_variants[0].id)}/>
                 <BubbleVariantOption variant={data.bubble_variants[1]} onClick={() => select(data.bubble_variants[1].id)}/>
@@ -39,8 +41,8 @@ const BubbleVariantOption: React.FC<BubbleVariantOptionProps> = ({onClick, varia
         <div 
             className={`
                 flex-grow relative m-1 transition-all
-                rounded-xl border border-pink-200 shadow shadow-pink-200 
-                hover:shadow-pink-300 hover:shadow-md
+                rounded-xl border border-blue-200 shadow shadow-blue-200 
+                hover:shadow-blue-300 hover:shadow-md
             `}
             onClick={onClick}
         >

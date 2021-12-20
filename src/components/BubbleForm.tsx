@@ -115,7 +115,7 @@ const BubbleForm:React.FC<BubbleFormProps> = ({className}) => {
                         )}
                     </div>
                 </ControlWrapper>
-                <Button title="Создать" color="green" className="self-end"/>
+                <Button title="Создать" color="pink" className="self-end"/>
             </form>
         </Paper>
     )

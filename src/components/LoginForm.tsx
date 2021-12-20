@@ -55,7 +55,7 @@ export default function LoginForm() {
                 <Button title="Войти"/>
             </form>
             <span className="text-xs text-gray-500">Нет аккаунта? <Link href="/register" passHref>
-                <a className="text-pink-500">
+                <a className="text-blue-500">
                     Зарегистрируйтесь!
                 </a>
             </Link></span>

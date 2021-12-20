@@ -56,8 +56,8 @@ const Dropzone = ({onChange, value}: {onChange: React.ChangeEventHandler, value?
         <div 
             className={`
                 flex flex-col 
-                border-2 border-dashed border-pink-500 
-                text-sm text-pink-500 rounded-xl 
+                border-2 border-dashed border-blue-500 
+                text-sm text-blue-500 rounded-xl 
                 p-4 text-center
             `}
             {...getRootProps()}

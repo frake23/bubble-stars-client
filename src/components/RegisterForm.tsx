@@ -65,7 +65,7 @@ export default function RegisterForm() {
                 <Button title="Зарегестрироваться"/>
             </form>
             <span className="text-xs text-gray-500">Есть аккаунт? <Link href="/login" passHref>
-                <a className="text-pink-500">
+                <a className="text-blue-500">
                     Войдите!
                 </a>
             </Link></span>

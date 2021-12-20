@@ -16,7 +16,7 @@ const Button: React.FC<ButtonProps> = ({
     type='primary',
     onClick = 'submit',
     className,
-    color = 'pink',
+    color = 'blue',
     href
 }) => {
     const { primaryColor, secondaryColor } = pickColor(color);
