@@ -5,8 +5,9 @@ import { useForm } from 'react-hook-form';
 import fetcher from '../fetcher';
 import useUser from '../hooks/useUser';
 import setServerErrors from '../lib/setServerErrors';
+import { FormResponse } from '../types/responses';
 import Button from './Button';
-import {Input} from './Controls';
+import {InputControl} from './Controls';
 import Paper from './Paper';
 
 interface LoginFormData {
@@ -19,10 +20,9 @@ export default function LoginForm() {
     const { mutate } = useUser();
 
     const onSubmit = async (data: LoginFormData) => {
-        const json = await fetcher(process.env.NEXT_PUBLIC_API_HOST! + '/auth/login', {
+        const json: FormResponse<LoginFormData> = await fetcher(process.env.NEXT_PUBLIC_API_HOST! + '/auth/login', {
             method: 'POST',
             body: JSON.stringify(data),
-            credentials: 'include'
         });
         if (json.errors) {
             setServerErrors<LoginFormData>(json.errors, setError);
@@ -32,10 +32,10 @@ export default function LoginForm() {
     }
     
     return (
-        <Paper className="w-80 flex-shrink flex flex-col">
+        <Paper className="w-96 flex-shrink flex flex-col">
             <h1 className="text-2xl font-bold mb-2">Вход</h1>
             <form className="flex flex-col mb-2" onSubmit={handleSubmit(onSubmit)}>
-                <Input
+                <InputControl
                     title="Имя пользователя или почта"
                     placeholder="Введите имя пользователя или почту"
                     label="login"
@@ -43,7 +43,7 @@ export default function LoginForm() {
                     className="mb-2"
                     error={errors.login?.message}
                 />
-                <Input
+                <InputControl
                     title="Пароль"
                     placeholder="Введите пароль"
                     label="password"

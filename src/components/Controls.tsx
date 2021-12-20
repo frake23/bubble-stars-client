@@ -12,14 +12,16 @@ const controlClassName = (error?: string) => `
     transition-all
 `
 
-interface ControllerProps {
-    label: string;
-    register: UseFormRegister<any>;
+interface ControlProps {
+    label: string,
+    register: UseFormRegister<any>
 }
 
-type InputProps = ControlWrapperProps & ControllerProps & {placeholder?: string}
 
-export function Input({placeholder, label, register, ...props}: InputProps) {
+type InputProps = ControlWrapperProps & ControlProps & {placeholder?: string}
+type SelectProps = ControlWrapperProps & ControlProps & {options: {text: string, value: any}[]}
+
+export function InputControl({placeholder, label, register, ...props}: InputProps) {
     let inputType;
     if (label === 'email') inputType = label;
     else if (label.includes('password')) inputType = 'password';
@@ -37,14 +39,17 @@ export function Input({placeholder, label, register, ...props}: InputProps) {
     )
 }
 
-export function TextArea({placeholder, label, register, ...props}: InputProps) {
+export function SelectControl({label, register, options, ...props}: SelectProps) {
     return (
         <ControlWrapper {...props}>
-            <textarea
-                className={controlClassName(props.error) + ' resize-none'}
+            <select
+                className={controlClassName(props.error)}
                 {...register(label)}
-                placeholder={placeholder || props.title}
-            />
+            >
+                {options.map(opt => 
+                    <option value={opt.value} key={`option-${opt.value}`}>{opt.text}</option>    
+                )}
+            </select>
         </ControlWrapper>
     )
 }

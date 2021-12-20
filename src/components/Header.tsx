@@ -18,7 +18,7 @@ export default function Header() {
                             <h1 className="font-mono text-xl ml-2 font-bold">Bubble Stars</h1>
                         </a>
                     </Link>
-                    <Link href='/bubble/create' passHref>
+                    <Link href='/bubbles/manage/all' passHref>
                         <a className="text-base text-pink-500">Создать bubble</a>
                     </Link>
                 </div>

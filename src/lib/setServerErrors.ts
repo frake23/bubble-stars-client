@@ -1,12 +1,12 @@
-import type { Path, UseFormSetError } from "react-hook-form";
+import type { FieldPath, Path, UseFormSetError } from "react-hook-form";
 
 export default function setServerErrors<T>(
-    errors: { [P in keyof T]?: string[] },
+    errors: { [P in FieldPath<T>]: string[] },
     setError: UseFormSetError<T>
 ) {
     return Object.keys(errors).forEach((key) => {
-        setError(key as Path<T>, {
-            message: errors[key as keyof T]!.join('. '),
+        setError(key as FieldPath<T>, {
+            message: errors[key as FieldPath<T>]!.join('. '),
         });
     });
 }

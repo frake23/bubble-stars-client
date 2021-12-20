@@ -5,8 +5,9 @@ import { useForm } from 'react-hook-form';
 import fetcher from '../fetcher';
 import useUser from '../hooks/useUser';
 import setServerErrors from '../lib/setServerErrors';
+import { FormResponse } from '../types/responses';
 import Button from './Button';
-import {Input} from './Controls';
+import {InputControl} from './Controls';
 import Paper from './Paper';
 
 interface RegisterFormData {
@@ -22,7 +23,7 @@ export default function RegisterForm() {
     const { mutate } = useUser();
 
     const onSubmit = async (data: RegisterFormData) => {
-        const json = await fetcher(process.env.NEXT_PUBLIC_API_HOST! + '/auth/register', {
+        const json: FormResponse<RegisterFormData> = await fetcher(process.env.NEXT_PUBLIC_API_HOST! + '/auth/register', {
             method: 'POST',
             body: JSON.stringify(data)
         });
@@ -34,10 +35,10 @@ export default function RegisterForm() {
     }
 
     return (
-        <Paper className="w-80 flex-shrink flex flex-col">
+        <Paper className="w-96 flex-shrink flex flex-col">
             <h1 className="text-2xl font-bold mb-2">Регистрация</h1>
             <form className="flex flex-col mb-2" onSubmit={handleSubmit(onSubmit)}>
-                <Input
+                <InputControl
                     title="Почта"
                     placeholder="Введите почту"
                     label="email"
@@ -45,7 +46,7 @@ export default function RegisterForm() {
                     className="mb-2"
                     error={errors.email?.message}
                 />
-                <Input
+                <InputControl
                     title="Имя пользователя"
                     placeholder="Введите имя пользователя"
                     label="username"
@@ -53,7 +54,7 @@ export default function RegisterForm() {
                     className="mb-2"
                     error={errors.username?.message}
                 />
-                <Input
+                <InputControl
                     title="Пароль"
                     placeholder="Введите пароль"
                     label="password"

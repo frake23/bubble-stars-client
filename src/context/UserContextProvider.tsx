@@ -1,18 +1,17 @@
 import React, { createContext } from 'react';
 import useSWR, { KeyedMutator } from 'swr';
+import { UserResponse } from '../types/responses';
 
 interface UserContextValue {
-    user?: {
-        username: string
-    },
+    user?: UserResponse,
     loading: boolean,
-    mutate?: KeyedMutator<UserContextValue['user']>
+    mutate?: KeyedMutator<UserResponse>
 }
 
 export const UserContext = createContext<UserContextValue>({user: undefined, loading: true, mutate: undefined});
 
 const UserContextProvider: React.FC = ({children}) => {
-    const {data: user, error, mutate} = useSWR<UserContextValue['user']>(process.env.NEXT_PUBLIC_API_HOST! + '/user', {
+    const {data: user, error, mutate} = useSWR<UserResponse>(process.env.NEXT_PUBLIC_API_HOST! + '/user', {
         onErrorRetry: (error) => {
             if (error.status === 401) return;
         },
