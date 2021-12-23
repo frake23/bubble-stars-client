@@ -36,7 +36,7 @@ const Button: React.FC<ButtonProps> = ({
                     ${
                         type === 'primary'
                             ? `text-white ${primaryColor}`
-                            : `bg-white border-2 hover:bg-gray-50 ${secondaryColor}`
+                            : `bg-white border-2 hover:bg-blue-50 ${secondaryColor}`
                     }
                     rounded
                     ${className || ''}

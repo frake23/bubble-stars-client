@@ -38,3 +38,10 @@ export type GameProcessResponse = {
     round: undefined,
     of: undefined
 }
+
+export type SingleBubbleResponse = Pick<BubblesResponse[number], 'title' | 'description'>
+
+export type StatsResponse = SingleBubbleResponse & {
+    games_count: number,
+    bubble_variants: (BubbleVariant & {image: string, winrate: number, won_times: number})[]
+}

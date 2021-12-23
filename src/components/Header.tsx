@@ -13,9 +13,9 @@ export default function Header() {
             <div className="container px-4 py-3 flex justify-between">
                 <div className="flex items-center">
                     <Link href="/" passHref>
-                        <a className="flex items-center mr-8">
-                            <Image src="/bubble.svg" alt="BUBBLE" width={32} height={32}/>
-                            <h1 className="font-mono text-xl ml-2 font-bold">Bubble Stars</h1>
+                        <a className="flex items-center mr-4 sm:mr-8">
+                            <Image src="/bubble.svg" alt="BUBBLE" width={32} height={32} className="shrink-0"/>
+                            <h1 className="font-mono text-xl ml-2 font-bold sm:block hidden">Bubble Stars</h1>
                         </a>
                     </Link>
                     <Link href='/bubbles/manage/all' passHref>

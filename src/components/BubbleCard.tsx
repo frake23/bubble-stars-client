@@ -5,6 +5,7 @@ import {UserIcon} from '@heroicons/react/solid'
 import Link from 'next/link';
 import Button from './Button';
 import Image from 'next/image';
+import {XIcon, PencilIcon} from '@heroicons/react/solid'
 
 interface BubbleCardProps {
     bubble: BubblesResponse[number],
@@ -20,7 +21,7 @@ const BubbleCard: React.FC<BubbleCardProps> = ({bubble, managable=false, classNa
                     <Image src={bubble.images[0]} alt='image-1' layout="fill" className="rounded-tl-xl"/>
                 </div>
                 <div className="relative flex-grow">
-                    <Image src={bubble.images[1]} alt='image-1' layout="fill" className="rounded-tr-xl"/>
+                    <Image src={bubble.images[1]} alt='image-2' layout="fill" className="rounded-tr-xl"/>
                 </div>
             </div>
             <div className="flex flex-col text-right p-4 flex-grow">
