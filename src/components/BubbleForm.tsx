@@ -7,6 +7,7 @@ import { InputControl, SelectControl } from './Controls';
 import Paper from './Paper';
 import setServerErrors from '../lib/setServerErrors';
 import { FormResponse } from '../types/responses';
+import { useTranslation } from 'next-i18next';
 
 interface BubbleFormProps {
     className?: string
@@ -70,13 +71,15 @@ const BubbleForm:React.FC<BubbleFormProps> = ({className}) => {
         });
     }
 
+    const {t} = useTranslation("bubbleForm")
+
     return (
         <Paper className={`flex flex-col w-full ${className ? className : ''}`}>
-            <h1 className="text-2xl font-bold mb-2">Создание bubble</h1>
+            <h1 className="text-2xl font-bold mb-2">{t('header')}</h1>
             <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
                 <InputControl
-                    title="Заголовок"
-                    placeholder="Введите заголовок"
+                    title={t('title')}
+                    placeholder={t('titlePlaceholder')}
                     label="title"
                     register={register}
                     className="mb-2"
@@ -84,8 +87,8 @@ const BubbleForm:React.FC<BubbleFormProps> = ({className}) => {
                     titleClassName='text-lg font-medium'
                 />
                 <InputControl
-                    title="Описание"
-                    placeholder="Введите описание"
+                    title={t('description')}
+                    placeholder={t('descriptionPlaceholder')}
                     label="description"
                     register={register}
                     className="mb-2"
@@ -93,7 +96,7 @@ const BubbleForm:React.FC<BubbleFormProps> = ({className}) => {
                     titleClassName='text-lg font-medium'
                 />
                 <SelectControl
-                    title="Количество вариантов"
+                    title={t('count')}
                     label="variants_count"
                     register={register}
                     options={[
@@ -103,7 +106,7 @@ const BubbleForm:React.FC<BubbleFormProps> = ({className}) => {
                     error={errors.variants_count?.message}
                     titleClassName='text-lg font-medium'
                 />
-                <ControlWrapper title="Варианты" className="flex flex-col mb-6" titleClassName='text-lg font-medium'>
+                <ControlWrapper title={t('variants')} className="flex flex-col mb-6" titleClassName='text-lg font-medium'>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         {fields.map((_, i) => 
                             <BubbleVariantControl
@@ -124,7 +127,7 @@ const BubbleForm:React.FC<BubbleFormProps> = ({className}) => {
                         )}
                     </div>
                 </ControlWrapper>
-                <Button title="Создать" color="pink" className="self-end"/>
+                <Button title={t('create')} color="pink" className="self-end"/>
             </form>
         </Paper>
     )

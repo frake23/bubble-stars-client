@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -22,6 +23,8 @@ export default function RegisterForm() {
     const { register, handleSubmit, setError, formState: { errors } } = useForm<RegisterFormData>();
     const { mutate } = useUser();
 
+    const {t} = useTranslation('register')
+
     const onSubmit = async (data: RegisterFormData) => {
         const json: FormResponse<RegisterFormData> = await fetcher(process.env.NEXT_PUBLIC_API_HOST! + '/auth/register', {
             method: 'POST',
@@ -36,37 +39,37 @@ export default function RegisterForm() {
 
     return (
         <Paper className="w-96 flex-shrink flex flex-col">
-            <h1 className="text-2xl font-bold mb-2">Регистрация</h1>
+            <h1 className="text-2xl font-bold mb-2">{t('header')}</h1>
             <form className="flex flex-col mb-2" onSubmit={handleSubmit(onSubmit)}>
                 <InputControl
-                    title="Почта"
-                    placeholder="Введите почту"
+                    title={t('email')}
+                    placeholder={t('emailPlaceholder')}
                     label="email"
                     register={register}
                     className="mb-2"
                     error={errors.email?.message}
                 />
                 <InputControl
-                    title="Имя пользователя"
-                    placeholder="Введите имя пользователя"
+                    title={t('username')}
+                    placeholder={t('usernamePlaceholder')}
                     label="username"
                     register={register}
                     className="mb-2"
                     error={errors.username?.message}
                 />
                 <InputControl
-                    title="Пароль"
-                    placeholder="Введите пароль"
+                    title={t('password')}
+                    placeholder={t('passwordPlaceholder')}
                     label="password"
                     register={register}
                     className="mb-4"
                     error={errors.password?.message}
                 />
-                <Button title="Зарегестрироваться"/>
+                <Button title={t('button')}/>
             </form>
-            <span className="text-xs text-gray-500">Есть аккаунт? <Link href="/login" passHref>
+            <span className="text-xs text-gray-500">{t('haveAccount')} <Link href="/login" passHref>
                 <a className="text-blue-500">
-                    Войдите!
+                    {t('signIn')}
                 </a>
             </Link></span>
         </Paper>

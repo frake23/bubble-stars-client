@@ -4,9 +4,11 @@ import Link from 'next/link';
 import Button from './Button';
 import useUser from '../hooks/useUser';
 import {UserIcon} from '@heroicons/react/outline';
+import { useTranslation } from 'next-i18next';
 
 export default function Header() {
     const {user, loading} = useUser();
+    const {t} = useTranslation('header')
 
     return (
         <div className="shadow-md bg-blue-50">
@@ -19,7 +21,7 @@ export default function Header() {
                         </a>
                     </Link>
                     <Link href='/bubbles/manage/all' passHref>
-                        <a className="text-base text-blue-500">Создать bubble</a>
+                        <a className="text-base text-blue-500">{t('create')}</a>
                     </Link>
                 </div>
                 {
@@ -33,7 +35,7 @@ export default function Header() {
                             </a>
                         </Link>
                             :
-                        <Button title="Войти" href="/login"/>
+                        <Button title={t('login')} href="/login"/>
                     )
                 }
                 

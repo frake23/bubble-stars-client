@@ -1,0 +1,13 @@
+{
+    "header": "Bubble creation",
+    "title": "Title",
+    "titlePlaceholder": "Type a title",
+    "description": "Description",
+    "descriptionPlaceholder": "Type a description",
+    "count": "Variants count",
+    "variants": "Variants",
+    "variant": "Variant",
+    "create": "Create",
+    "variantPlaceholder": "Variant's title",
+    "drop": "Click it or drop here an image"
+}

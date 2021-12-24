@@ -40,7 +40,7 @@ const ManagePage: NextPage = () => {
                             params[0] === 'all' ?
                                 <BubblesFeed userId={user.id} managable={true}/>
                                 :
-                                <BubbleForm mana/>
+                                <BubbleForm/>
                         }
                     </div>
                     
@@ -49,5 +49,17 @@ const ManagePage: NextPage = () => {
         </MainLayout>
     )
 }
+
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
+
+export async function getServerSideProps({ locale }: {locale: string}) {
+    return {
+      props: {
+        ...(await serverSideTranslations(locale, ['header', 'bubbleForm', 'bubble', 'manage'])),
+        // Will be passed to the page component as props
+      },
+    };
+  }
+
 
 export default ManagePage;

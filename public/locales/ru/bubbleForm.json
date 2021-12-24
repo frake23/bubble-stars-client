@@ -1,0 +1,13 @@
+{
+    "header": "Создание bubble",
+    "title": "Заголовок",
+    "titlePlaceholder": "Введите заголовок",
+    "description": "Описание",
+    "descriptionPlaceholder": "Введите описание",
+    "count": "Количество вариантов",
+    "variants": "Варианты",
+    "variant": "Варианта",
+    "create": "Создать",
+    "variantPlaceholder": "Заголовок варианта",
+    "drop": "Нажмите сюда или перетащите картинку"
+}

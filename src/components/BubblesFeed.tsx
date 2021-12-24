@@ -9,7 +9,7 @@ interface BubblesFeedProps {
 }
 
 const BubblesFeed: React.FC<BubblesFeedProps> = ({userId, managable=false, className}) => {
-    const {bubbles, loading} = useBubbles(userId);
+    const {bubbles, loading, mutate} = useBubbles(userId);
     
     return (
         (
@@ -21,6 +21,7 @@ const BubblesFeed: React.FC<BubblesFeedProps> = ({userId, managable=false, class
                         bubble={bubble} 
                         key={`bubble-${bubble.id}`}
                         managable={managable}
+                        mutate={mutate}
                     />
                 )}
             </div>

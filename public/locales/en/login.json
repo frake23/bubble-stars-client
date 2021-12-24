@@ -1,0 +1,10 @@
+{
+    "header": "Sign In",
+    "usernameOrEmail": "Username or Email",
+    "password": "Password",
+    "button": "Log In",
+    "loginPlaceholder": "Type username or Email",
+    "passwordPlaceholder": "Type password",
+    "haveAccount": "No account?",
+    "signUp": "Sign Up!"
+}

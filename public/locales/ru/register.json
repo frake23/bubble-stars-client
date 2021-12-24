@@ -1,0 +1,12 @@
+{
+    "header": "Регистрация",
+    "email": "Почта",
+    "username": "Имя пользователя",
+    "password": "Пароль",
+    "button": "Зарегистрироваться",
+    "haveAccount": "Есть аккаунт?",
+    "signIn": "Войдите!",
+    "emailPlaceholder": "Введите почту",
+    "usernamePlaceholder": "Введите имя пользователя",
+    "passwordPlaceholder": "Введите пароль"
+}

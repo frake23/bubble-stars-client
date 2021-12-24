@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import React from 'react';
 import useSWR from 'swr';
@@ -9,21 +10,21 @@ interface BubbleStatsProps {
 
 const BubbleStats: React.FC<BubbleStatsProps> = ({bubbleId}) => {
     const {data: stats} = useSWR<StatsResponse>(process.env.NEXT_PUBLIC_API_HOST + `/bubbles/${bubbleId}/stats`);
-
+    const {t} = useTranslation('stats')
     return (
         stats && stats.bubble_variants ?
         <div className="flex flex-col">
-            <h1 className="text-3xl font-bold mb-4 text-center">Статистика</h1>
+            <h1 className="text-3xl font-bold mb-4 text-center">{t('header')}</h1>
             <div className="flex flex-col mb-4">
-                <h1 className="text-2xl font-bold">{stats.title}, <span className='font-normal'>сыграно {stats.games_count} раз</span></h1>
+                <h1 className="text-2xl font-bold">{stats.title}, <span className='font-normal'>{t('played')} {stats.games_count} {t('times')}</span></h1>
                 <span className="font-thin">{stats.description}</span>
             </div>
             <div className='grid grid-cols-12 divide-x text-lg font-semibold text-center divide-y'>
             <div className='col-span-1 p-4'>№</div>
-            <div className='col-span-3 p-4'>Название</div>
-            <div className='col-span-4 p-4'>Изображение</div>
-            <div className='col-span-2 p-4'>Количество побед</div>
-            <div className='col-span-2 p-4'>Процент побед</div>
+            <div className='col-span-3 p-4'>{t('name')}</div>
+            <div className='col-span-4 p-4'>{t('image')}</div>
+            <div className='col-span-2 p-4'>{t('count')}</div>
+            <div className='col-span-2 p-4'>{t('precent')}</div>
             {stats.bubble_variants.map((stat, index) => 
                 <BubbleStatsItem stat={stat} key={`stat-${stat.id}`} index={index + 1}/>
             )}

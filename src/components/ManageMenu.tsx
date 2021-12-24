@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import React from 'react';
 import Paper from './Paper';
@@ -8,17 +9,18 @@ interface ManageMenuProps {
 }
 
 const ManageMenu: React.FC<ManageMenuProps> = ({section, className}) => {
+    const {t} = useTranslation('manage');
     return (
         <Paper className={`flex flex-col text-center divide-y ${className ? className : ''}`}>
             <MenuItem 
                 active={section === 'all'}
                 name='all'
-                text='Ваши bubble'
+                text={t('your')}
             />
             <MenuItem 
                 active={section !== 'all'}
                 name='new'
-                text='Создать/Изменить bubble'
+                text={t('create')}
             />
         </Paper>
     )

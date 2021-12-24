@@ -1,0 +1,10 @@
+{
+    "header": "Вход",
+    "usernameOrEmail": "Имя пользователя или почта",
+    "password": "Пароль",
+    "button": "Войти",
+    "loginPlaceholder": "Введите имя пользователя или почту",
+    "passwordPlaceholder": "Введите пароль",
+    "haveAccount": "Нет аккаунта?",
+    "signUp": "Зарегистрируйтесь!"
+}

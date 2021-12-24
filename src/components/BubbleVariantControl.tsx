@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
@@ -16,14 +17,14 @@ interface BubbleVariantControlProps {
 }
 
 const BubbleVariantControl: React.FC<BubbleVariantControlProps> = ({inputLabel, fileLabel, register, className, error, control, index}) => {
-
+    const {t} = useTranslation('bubbleForm')
     return (
         <div className={`flex flex-col ${className ? className : ''}`}>
             <InputControl
-                title={`Вариант ${index+1}`}
+                title={`${t('variant')} ${index+1}`}
                 label={inputLabel}
                 register={register}
-                placeholder='Заголовок варианта'
+                placeholder={t('variantPlaceholder')}
                 className="mb-2"
                 error={error}
             />
@@ -40,6 +41,7 @@ const BubbleVariantControl: React.FC<BubbleVariantControlProps> = ({inputLabel, 
 const Dropzone = ({onChange, value}: {onChange: React.ChangeEventHandler, value?: File}) => {
     const [imgUrl, setImgUrl] = useState<any>(null);
 
+    const {t} = useTranslation('bubbleForm')
     useEffect(() => {
         if (!value) setImgUrl(null)
     }, [value])
@@ -69,7 +71,7 @@ const Dropzone = ({onChange, value}: {onChange: React.ChangeEventHandler, value?
                 imgUrl ?
                     <Image src={imgUrl} alt="image" width="100%" height="100%" className="mt-2 rounded-xl" />
                     :
-                    (isDragActive ? 'Перетащите картинку сюда...' : 'Нажмите или перетащите сюда картинку')
+                    t('drop')
             }
         </div>
     )
