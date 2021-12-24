@@ -20,6 +20,7 @@ const BubblesFeed: React.FC<BubblesFeedProps> = ({userId, managable=false, class
                         className="col-span-1"
                         bubble={bubble} 
                         key={`bubble-${bubble.id}`}
+                        managable={managable}
                     />
                 )}
             </div>

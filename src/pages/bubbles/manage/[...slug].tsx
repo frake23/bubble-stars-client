@@ -18,6 +18,7 @@ const ManagePage: NextPage = () => {
     const {user} = useUser();
 
     useEffect(() => {
+        console.log(slug)
         if (!slug) return;
         if (
             slug.length > 2 || 
@@ -37,9 +38,9 @@ const ManagePage: NextPage = () => {
                     <div className="cols-span-1 md:col-span-3">
                         {
                             params[0] === 'all' ?
-                                <BubblesFeed userId={user.id}/>
+                                <BubblesFeed userId={user.id} managable={true}/>
                                 :
-                                <BubbleForm/>
+                                <BubbleForm mana/>
                         }
                     </div>
                     

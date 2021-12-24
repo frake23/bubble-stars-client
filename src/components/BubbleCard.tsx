@@ -16,6 +16,7 @@ interface BubbleCardProps {
 const BubbleCard: React.FC<BubbleCardProps> = ({bubble, managable=false, className}) => {
     return (
         <Paper className={`flex flex-col hover:shadow-md hover:shadow-blue-300 ${className ? className : ''}`} p={0}>
+            
             <div className="flex relative h-52">
                 <div className="relative flex-grow">
                     <Image src={bubble.images[0]} alt='image-1' layout="fill" className="rounded-tl-xl"/>
@@ -23,6 +24,19 @@ const BubbleCard: React.FC<BubbleCardProps> = ({bubble, managable=false, classNa
                 <div className="relative flex-grow">
                     <Image src={bubble.images[1]} alt='image-2' layout="fill" className="rounded-tr-xl"/>
                 </div>
+                {
+                    managable &&
+                    <div className='absolute right-0 top-0 m-2 rounded-md z-50 bg-white flex items-center divide-x border'>
+                        <Link href={`/bubbles/manage/update/${bubble.id}`} passHref>
+                            <a>
+                                <PencilIcon className='w-8 h-8 text-blue-500 hover:text-blue-600 p-2'/>
+                            </a>
+                        </Link>
+                        <button className='bg-transparent'>
+                            <XIcon className='w-8 h-8 text-red-500 hover:text-red-600 p-2'/>
+                        </button>
+                    </div>
+                }
             </div>
             <div className="flex flex-col text-right p-4 flex-grow">
                 <h2 className="text-sm font-bold mb-1 truncate whitespace-nowrap">{bubble.title}</h2>

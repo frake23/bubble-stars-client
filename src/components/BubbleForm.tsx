@@ -23,7 +23,16 @@ interface BubbleFormData {
 }
 
 const BubbleForm:React.FC<BubbleFormProps> = ({className}) => {
-    const { register, handleSubmit, setError, formState: { errors }, watch, control, reset } = useForm<BubbleFormData>();
+    const { 
+        register, 
+        handleSubmit, 
+        setError, 
+        formState: { errors },
+        watch,
+        control,
+        reset,
+        setValue
+    } = useForm<BubbleFormData>();
 
     const variantsCount = watch('variants_count', 8);
     const {fields, append, remove,} = useFieldArray<BubbleFormData>({name: 'bubble_variants', control})
