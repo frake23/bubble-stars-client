@@ -18,7 +18,7 @@ const UserContextProvider: React.FC = ({children}) => {
     });
 
     return (
-        <UserContext.Provider value={{user: error ? undefined : user, loading: !error && !user, mutate}}>
+        <UserContext.Provider value={{user: error ? undefined : user, loading: !error && user === undefined, mutate}}>
             {children}
         </UserContext.Provider>
     )
